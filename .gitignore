@@ -1,0 +1,57 @@
+# Angular
+/dist/
+/bazel-out
+/integration/bazel/bazel-execroot/rules_typescript/typescript/bin/tsc.runfiles/angular/packages/
+node_modules/
+.npm/
+out/
+.ngtsc/
+.ng/
+.DS_Store
+*.scssc
+*.swp
+*.swapc
+.vscode/launch.json
+.vscode/settings.json
+*.jlog
+*.log
+yarn-error.log
+
+# IDEs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# misc
+/.angular/cache
+.parcel-cache
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+
+# IDEs and editors
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.history/
+
+# miscellaneous
+.angular/cache
+.sass-cache/
+connect.lock
+coverage
+libpeerconnection.log
+testem.log
+
+# System files
+Thumbs.db
