@@ -23,7 +23,6 @@ declare var lucide: any;
   standalone: true,
   imports: [
     CommonModule,
-    Header,
     Hero,
     Showroom3d,
     Features,
@@ -33,10 +32,8 @@ declare var lucide: any;
     Financing,
     Testimonials,
     Contact,
-    Map,
-    Footer,
-    WhatsappButton,
-  ],
+    Map
+],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css',

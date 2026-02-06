@@ -47,7 +47,7 @@ export class Hero implements AfterViewInit, OnDestroy {
     if (this.carouselInterval) clearInterval(this.carouselInterval);
     this.carouselInterval = setInterval(() => {
       this.nextCar();
-    }, 8000); // 8 segundos de intervalo
+    }, 10000); // 8 segundos de intervalo
   }
 
   nextCar() {
