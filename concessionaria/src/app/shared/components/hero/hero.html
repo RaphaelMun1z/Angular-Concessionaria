@@ -4,25 +4,35 @@
   aria-label="Destaque Principal"
 >
   <div class="absolute inset-0 bg-dark/90 backdrop-blur-[2px] z-0"></div>
-  
+
   <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent z-0"></div>
 
-  <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] z-0 pointer-events-none animate-pulse-slow"></div>
+  <div
+    class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] z-0 pointer-events-none animate-pulse-slow"
+  ></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-    
+  <div
+    class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+  >
     <div class="text-center lg:text-left pt-10 lg:pt-0 relative order-2 lg:order-1">
-      
-      <span
-        class="inline-flex items-center gap-2 py-1.5 px-5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-accentLight text-xs font-bold tracking-widest uppercase mb-8 shadow-lg hover:bg-white/10 transition-all cursor-default"
+      <div
+        class="inline-flex items-center gap-3 py-2 px-5 rounded-full bg-dark/40 backdrop-blur-md border border-yellow-500/30 shadow-[0_0_15px_rgba(234,179,8,0.1)] hover:shadow-[0_0_25px_rgba(234,179,8,0.2)] hover:border-yellow-500/50 hover:bg-white/5 transition-all duration-300 cursor-default group mb-8"
         data-aos="fade-down"
       >
         <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75 duration-1000"
+          ></span>
+          <span
+            class="relative inline-flex rounded-full h-2 w-2 bg-yellow-500 group-hover:scale-125 transition-transform duration-300"
+          ></span>
         </span>
-        Feirão de Seminovos
-      </span>
+        <span
+          class="text-yellow-50 text-xs font-bold tracking-[0.2em] uppercase group-hover:text-white transition-colors"
+        >
+          Feirão de Seminovos
+        </span>
+      </div>
 
       <h1
         class="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-[1.1] tracking-tight drop-shadow-2xl"
@@ -38,7 +48,7 @@
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        Concessionária com mais de <strong class="text-white">300 seminovos revisados</strong>. 
+        Concessionária com mais de <strong class="text-white">300 seminovos revisados</strong>.
         Garantia de procedência, taxas exclusivas e a melhor avaliação do seu usado na troca.
       </p>
 
@@ -57,7 +67,9 @@
             data-lucide="arrow-right"
             class="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform"
           ></i>
-          <div class="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-white/10"></div>
+          <div
+            class="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-white/10"
+          ></div>
         </a>
 
         <a
@@ -75,20 +87,28 @@
         data-aos-delay="400"
       >
         <div class="flex items-center gap-3 group cursor-default">
-          <div class="p-2 rounded-full bg-white/5 group-hover:bg-accent/20 transition-colors border border-white/5">
+          <div
+            class="p-2 rounded-full bg-white/5 group-hover:bg-accent/20 transition-colors border border-white/5"
+          >
             <i data-lucide="shield-check" class="w-5 h-5 text-yellow-400"></i>
           </div>
           <div class="flex flex-col">
-            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Garantia</span>
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold"
+              >Garantia</span
+            >
             <span class="text-sm text-white font-bold">Total</span>
           </div>
         </div>
         <div class="flex items-center gap-3 group cursor-default">
-          <div class="p-2 rounded-full bg-white/5 group-hover:bg-accent/20 transition-colors border border-white/5">
+          <div
+            class="p-2 rounded-full bg-white/5 group-hover:bg-accent/20 transition-colors border border-white/5"
+          >
             <i data-lucide="check-circle" class="w-5 h-5 text-yellow-400"></i>
           </div>
           <div class="flex flex-col">
-            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Veículos</span>
+            <span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold"
+              >Veículos</span
+            >
             <span class="text-sm text-white font-bold">100% Revisados</span>
           </div>
         </div>
@@ -100,23 +120,20 @@
       data-aos="zoom-in"
       data-aos-delay="400"
     >
-      <!-- CARROSSEL 3D -->
+      <!-- CARROSSEL 3D: Uso de [src] para binding dinâmico -->
       <model-viewer
         [src]="currentModelSrc"
         alt="Carro Destaque 3D"
-        
         camera-orbit="45deg 75deg 100%"
         min-camera-orbit="auto 75deg 105%"
         max-camera-orbit="auto 75deg 200%"
         field-of-view="25deg"
-        
         auto-rotate
         rotation-per-second="3deg"
         camera-controls
         shadow-intensity="2"
         shadow-softness="0.5"
         exposure="1"
-        
         touch-action="pan-y"
         class="focus:outline-none cursor-grab active:cursor-grabbing transition-opacity duration-500 ease-in-out"
         [class.opacity-0]="isTransitioning"
@@ -134,8 +151,8 @@
 
       <!-- Indicador de Carrossel -->
       <div class="absolute bottom-20 right-10 flex flex-col gap-2 z-20 pointer-events-none">
-        <div 
-          *ngFor="let car of carModels; let i = index" 
+        <div
+          *ngFor="let car of carModels; let i = index"
           class="w-1.5 h-1.5 rounded-full transition-all duration-300"
           [class.bg-yellow-400]="i === currentCarIndex"
           [class.h-4]="i === currentCarIndex"
