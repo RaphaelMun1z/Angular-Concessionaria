@@ -1,109 +1,243 @@
-<header>
-  <nav
-    class="fixed w-full z-50 transition-all duration-300"
-    [class.shadow-md]="isScrolled"
-    [class.bg-white]="isScrolled"
-    [class.glass-nav]="!isScrolled"
-    id="navbar"
-    aria-label="Menu Principal"
-  >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <div class="flex items-center gap-2">
-          <!-- Logo Box com cor Accent -->
-          <div class="bg-accent rounded-lg p-1.5 shadow-lg shadow-accent/30">
-            <i data-lucide="car-front" class="text-white h-6 w-6" aria-hidden="true"></i>
-          </div>
-          <span class="text-2xl font-black tracking-tighter text-dark">
-            AUTO<span class="text-accent">ELITE</span>
-          </span>
-        </div>
+<header
+  class="fixed w-full z-50 transition-all duration-300 border-b"
+  [ngClass]="{
+    'bg-white/95 backdrop-blur-md shadow-sm py-2 border-gray-100': isScrolled,
+    'bg-transparent py-6 border-transparent': !isScrolled,
+  }"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-12">
+      <!-- Logo -->
+      <div
+        class="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+        (click)="scrollToTop($event)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-red-500"
+        >
+          <path
+            d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"
+          />
+          <circle cx="7" cy="17" r="2" />
+          <circle cx="17" cy="17" r="2" />
+        </svg>
+        <span
+          class="text-2xl font-black tracking-tighter transition-colors duration-300"
+          [ngClass]="isScrolled ? 'text-gray-900' : 'text-white'"
+        >
+          AutoElite<span class="text-red-500">.</span>
+        </span>
+      </div>
 
-        <div class="hidden lg:block">
-          <div class="ml-10 flex items-center space-x-1">
-            <a
-              href="#highlight"
-              (click)="scrollToSection($event, 'highlight')"
-              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
-              >Início</a
-            >
-            <a
-              href="#categories"
-              (click)="scrollToSection($event, 'categories')"
-              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
-              >Categorias</a
-            >
-            <a
-              href="#showroom"
-              (click)="scrollToSection($event, 'showroom')"
-              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
-              >Estoque</a
-            >
-            <a
-              href="#financing"
-              (click)="scrollToSection($event, 'financing')"
-              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
-              >Financiamento</a
-            >
-            <a
-              href="#test-drive"
-              (click)="scrollToSection($event, 'test-drive')"
-              class="ml-4 bg-dark hover:bg-accent text-white px-6 py-2.5 rounded-full transition-all shadow-lg hover:shadow-glow font-bold text-sm transform hover:-translate-y-0.5"
-            >
-              Avaliar meu Carro
-            </a>
-          </div>
-        </div>
-
-        <div class="lg:hidden">
-          <button
-            (click)="toggleMobileMenu()"
-            class="text-dark hover:text-accent focus:outline-none"
-            aria-label="Abrir menu mobile"
+      <!-- Desktop Menu -->
+      <div class="hidden lg:block">
+        <div class="ml-10 flex items-center space-x-1">
+          <a
+            *ngFor="let item of menuItems"
+            href="#"
+            (click)="scrollToSection($event, item.id)"
+            class="px-4 py-2 text-sm font-bold rounded-full transition-all"
+            [ngClass]="
+              isScrolled
+                ? 'text-gray-700 hover:text-red-500 hover:bg-red-50'
+                : 'text-white/90 hover:text-white hover:bg-white/10'
+            "
           >
-            <i data-lucide="menu" class="h-8 w-8" aria-hidden="true"></i>
-          </button>
+            {{ item.label }}
+          </a>
+
+          <a
+            href="#test-drive"
+            (click)="scrollToSection($event, 'test-drive')"
+            class="ml-2 px-6 py-2.5 rounded-full transition-all shadow-lg font-bold text-sm transform hover:-translate-y-0.5"
+            [ngClass]="
+              isScrolled
+                ? 'bg-gray-900 hover:bg-red-500 text-white hover:shadow-red-500/30'
+                : 'bg-white text-gray-900 hover:bg-red-500 hover:text-white border border-transparent'
+            "
+          >
+            Avaliar meu Carro
+          </a>
         </div>
       </div>
-    </div>
 
-    <div
-      class="lg:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full"
-      [class.hidden]="!isMobileMenuOpen"
-      id="mobile-menu"
-    >
-      <div class="px-4 pt-2 pb-4 space-y-1">
-        <a
-          href="#highlight"
-          (click)="scrollToSection($event, 'highlight')"
-          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
-          >Início</a
+      <!-- Mobile Menu Button -->
+      <div class="lg:hidden">
+        <button
+          (click)="toggleMobileMenu()"
+          class="p-2 focus:outline-none transition-colors"
+          [ngClass]="
+            isScrolled || isMobileMenuOpen
+              ? 'text-gray-900 hover:text-red-500'
+              : 'text-white hover:text-red-400'
+          "
+          aria-label="Menu Principal"
         >
-        <a
-          href="#categories"
-          (click)="scrollToSection($event, 'categories')"
-          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
-          >Categorias</a
-        >
-        <a
-          href="#showroom"
-          (click)="scrollToSection($event, 'showroom')"
-          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
-          >Estoque</a
-        >
-        <a
-          href="#financing"
-          (click)="scrollToSection($event, 'financing')"
-          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
-          >Financiamento</a
-        >
-        <a
-          href="#test-drive"
-          (click)="scrollToSection($event, 'test-drive')"
-          class="bg-accent text-white block px-3 py-3 rounded-md text-base font-bold mt-2 text-center shadow-lg"
-          >Avaliar meu Carro</a
-        >
+          <svg
+            *ngIf="!isMobileMenuOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+          <svg
+            *ngIf="isMobileMenuOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 18 18" />
+          </svg>
+        </button>
       </div>
     </div>
-  </nav>
+  </div>
+
+  <!-- Mobile Menu Dropdown (Grid Style) -->
+  <div
+    class="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-2xl absolute w-full transition-all duration-300 origin-top overflow-hidden"
+    [class.max-h-0]="!isMobileMenuOpen"
+    [class.max-h-[80vh]]="isMobileMenuOpen"
+    [class.opacity-0]="!isMobileMenuOpen"
+    [class.opacity-100]="isMobileMenuOpen"
+  >
+    <div class="px-4 pt-6 pb-8">
+      <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Navegação</p>
+
+      <!-- Grid de Navegação -->
+      <div class="grid grid-cols-2 gap-3">
+        <a
+          *ngFor="let item of menuItems"
+          href="#"
+          (click)="scrollToSection($event, item.id)"
+          class="flex flex-col items-center justify-center aspect-[4/3] bg-gray-50 hover:bg-red-50 rounded-2xl border border-gray-100 hover:border-red-100 transition-all group active:scale-95"
+        >
+          <div
+            class="w-10 h-10 mb-2 rounded-full bg-white flex items-center justify-center shadow-sm text-gray-400 group-hover:text-red-500 group-hover:scale-110 transition-all"
+          >
+            <!-- Renderização dinâmica de ícones simples -->
+            <ng-container [ngSwitch]="item.icon">
+              <svg
+                *ngSwitchCase="'home'"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+              <svg
+                *ngSwitchCase="'grid'"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="7" height="7" x="3" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="3" rx="1" />
+                <rect width="7" height="7" x="14" y="14" rx="1" />
+                <rect width="7" height="7" x="3" y="14" rx="1" />
+              </svg>
+              <svg
+                *ngSwitchCase="'car'"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"
+                />
+                <circle cx="7" cy="17" r="2" />
+                <circle cx="17" cy="17" r="2" />
+              </svg>
+              <svg
+                *ngSwitchCase="'dollar'"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="12" x2="12" y1="2" y2="22" />
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg>
+            </ng-container>
+          </div>
+          <span class="text-sm font-bold text-gray-600 group-hover:text-red-600">{{
+            item.label
+          }}</span>
+        </a>
+      </div>
+
+      <!-- Botão CTA Mobile -->
+      <a
+        href="#test-drive"
+        (click)="scrollToSection($event, 'test-drive')"
+        class="w-full mt-4 bg-gray-900 text-white flex items-center justify-center gap-2 py-4 rounded-xl text-base font-bold shadow-lg active:scale-95 transition-all"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="8.5" cy="7" r="4" />
+          <line x1="23" x2="17" y1="11" y2="11" />
+        </svg>
+        Avaliar meu Carro
+      </a>
+    </div>
+  </div>
 </header>

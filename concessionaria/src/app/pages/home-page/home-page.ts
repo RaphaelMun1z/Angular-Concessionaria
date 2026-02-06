@@ -7,7 +7,6 @@ import { Hero } from '../../shared/components/hero/hero';
 import { Showroom3d } from '../../shared/components/showroom3d/showroom3d';
 import { Features } from '../../shared/components/features/features';
 import { Categories } from '../../shared/components/categories/categories';
-import { StockList } from '../../shared/components/stock-list/stock-list';
 import { Gallery } from '../../shared/components/gallery/gallery';
 import { Services } from '../../shared/components/services/services';
 import { Financing } from '../../shared/components/financing/financing';
@@ -29,7 +28,6 @@ declare var lucide: any;
     Showroom3d,
     Features,
     Categories,
-    StockList,
     Gallery,
     Services,
     Financing,

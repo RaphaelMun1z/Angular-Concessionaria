@@ -1,53 +1,466 @@
-<section id="test-drive" class="relative py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-16">
-    <div class="md:w-1/2">
-      <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block"
-        >Entre em contato</span
-      >
-      <h2 class="text-4xl md:text-5xl font-black text-dark mb-6 tracking-tight">
+<section id="test-drive" class="relative py-24 bg-white font-sans text-gray-900">
+  <div class="max-w-7xl mx-auto px-4 relative z-10 flex flex-col md:flex-row items-start gap-16">
+    <!-- Coluna da Esquerda: Texto e Informações -->
+    <div class="md:w-1/2 sticky top-8">
+      <span class="text-red-500 font-bold tracking-widest uppercase text-sm mb-2 block">
+        Entre em contato
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight leading-tight">
         Quer Vender ou Comprar?
       </h2>
-      <p class="text-xl text-textGray mb-8">
-        Entre em contato agora mesmo. Fazemos uma pré-avaliação do seu usado pelo WhatsApp.
+      <p class="text-xl text-gray-500 mb-8 leading-relaxed">
+        Entre em contato agora mesmo. Fazemos uma pré-avaliação do seu usado pelo WhatsApp ou
+        agendamos sua visita.
       </p>
       <div class="flex flex-col gap-4">
-        <div class="flex items-center gap-4 p-4 bg-primary rounded-xl">
-          <div class="bg-white p-2 rounded-full shadow-sm text-green-500">
-            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        <!-- Item: Resposta Rápida -->
+        <div class="flex items-center gap-4 p-4 bg-gray-100 rounded-xl">
+          <div class="bg-white p-3 rounded-full shadow-sm text-green-500">
+            <!-- Icon: Message Circle -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z" />
+            </svg>
           </div>
           <div>
-            <p class="font-bold text-dark">Resposta Rápida</p>
-            <p class="text-sm text-textGray">Atendimento em até 10 minutos</p>
+            <p class="font-bold text-gray-900 text-lg">Resposta Rápida</p>
+            <p class="text-sm text-gray-500">Atendimento em até 10 minutos</p>
+          </div>
+        </div>
+
+        <!-- Item: Endereço -->
+        <div class="flex items-center gap-4 p-4 bg-gray-100 rounded-xl">
+          <div class="bg-white p-3 rounded-full shadow-sm text-red-500">
+            <!-- Icon: Map Pin -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 10c0 6-9 13-9 13s-9-7-9-13a9 9 0 0 1 18 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-bold text-gray-900 text-lg">Visite nossa loja</p>
+            <p class="text-sm text-gray-500">Av. Brasil, 1234 - Centro</p>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Coluna da Direita: Formulário -->
     <div class="md:w-1/2 w-full">
       <form
-        class="bg-white p-8 rounded-3xl border border-gray-100 shadow-2xl relative overflow-hidden"
+        [formGroup]="contactForm"
+        (ngSubmit)="onSubmit()"
+        [class.bg-green-500]="isSubmitted"
+        [class.bg-white]="!isSubmitted"
+        [class.border-green-600]="isSubmitted"
+        class="p-8 rounded-3xl border border-gray-100 shadow-2xl relative overflow-hidden transition-all duration-500 ease-in-out"
       >
-        <div class="absolute top-0 left-0 w-full h-2 bg-accent"></div>
-        <h3 class="text-dark font-black text-2xl mb-6">Fale Conosco</h3>
-        <div class="space-y-4">
-          <input
-            type="text"
-            placeholder="Nome"
-            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl"
-          />
-          <input
-            type="tel"
-            placeholder="Telefone"
-            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl"
-          />
+        <!-- Barra superior decorativa (some no sucesso) -->
+        <div *ngIf="!isSubmitted" class="absolute top-0 left-0 w-full h-2 bg-red-500"></div>
+
+        <!-- CONTEÚDO DO FORMULÁRIO (Modo Edição) -->
+        <div *ngIf="!isSubmitted" class="animate-fade-in">
+          <h3 class="text-gray-900 font-black text-2xl mb-2">Fale Conosco</h3>
+          <p class="text-gray-500 mb-6 text-sm">
+            Preencha os dados abaixo e entraremos em contato.
+          </p>
+
+          <div class="space-y-4">
+            <!-- Campo Nome -->
+            <div>
+              <label class="block text-xs font-bold text-gray-900 uppercase mb-1 ml-1" for="name"
+                >Nome Completo</label
+              >
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                placeholder="Ex: João da Silva"
+                [class.border-red-500]="isFieldInvalid('name')"
+                class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-gray-400"
+              />
+              <span *ngIf="isFieldInvalid('name')" class="text-red-500 text-xs ml-1"
+                >Nome é obrigatório</span
+              >
+            </div>
+
+            <!-- Grid para Telefone e Email -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-gray-900 uppercase mb-1 ml-1" for="phone"
+                  >Telefone</label
+                >
+                <input
+                  id="phone"
+                  type="tel"
+                  formControlName="phone"
+                  (input)="onPhoneInput($event)"
+                  maxlength="15"
+                  placeholder="(00) 00000-0000"
+                  [class.border-red-500]="isFieldInvalid('phone')"
+                  class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-gray-400"
+                />
+                <span *ngIf="isFieldInvalid('phone')" class="text-red-500 text-xs ml-1"
+                  >Telefone obrigatório</span
+                >
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-gray-900 uppercase mb-1 ml-1" for="email"
+                  >E-mail</label
+                >
+                <input
+                  id="email"
+                  type="email"
+                  formControlName="email"
+                  placeholder="seu@email.com"
+                  [class.border-red-500]="isFieldInvalid('email')"
+                  class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-gray-400"
+                />
+                <span *ngIf="isFieldInvalid('email')" class="text-red-500 text-xs ml-1"
+                  >E-mail inválido</span
+                >
+              </div>
+            </div>
+
+            <!-- Campo Seleção de Interesse -->
+            <div>
+              <label
+                class="block text-xs font-bold text-gray-900 uppercase mb-1 ml-1"
+                for="interest"
+                >Tenho interesse em</label
+              >
+              <div class="relative">
+                <select
+                  id="interest"
+                  formControlName="interest"
+                  [class.border-red-500]="isFieldInvalid('interest')"
+                  class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all text-gray-700 appearance-none cursor-pointer"
+                >
+                  <option value="" disabled selected>Selecione uma opção...</option>
+                  <option value="comprar">Comprar um Veículo</option>
+                  <option value="vender">Vender meu Veículo</option>
+                  <option value="troca">Troca / Consignação</option>
+                  <option value="financiamento">Simular Financiamento</option>
+                </select>
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-gray-500"
+                >
+                  <!-- Icon: Chevron Down -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </div>
+              </div>
+              <span *ngIf="isFieldInvalid('interest')" class="text-red-500 text-xs ml-1"
+                >Selecione uma opção</span
+              >
+            </div>
+
+            <!-- Campo de Upload Condicional (Slots Individuais) -->
+            <div *ngIf="isSelling" class="animate-fade-in transition-all duration-300">
+              <label class="block text-xs font-bold text-gray-900 uppercase mb-1 ml-1"
+                >Fotos do Veículo ({{ uploadedFiles.length }}/4)</label
+              >
+
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <!-- Loop para criar 4 slots fixos -->
+                <div *ngFor="let slot of slots; let i = index" class="relative aspect-square">
+                  <!-- Estado: Slot Preenchido (Imagem) -->
+                  <div
+                    *ngIf="uploadedFiles[i]; else emptySlot"
+                    class="w-full h-full relative group"
+                  >
+                    <img
+                      [src]="uploadedFiles[i].preview"
+                      class="w-full h-full object-cover rounded-xl border border-gray-200 cursor-zoom-in hover:opacity-90 transition-opacity"
+                      (click)="openZoom(uploadedFiles[i].preview)"
+                      title="Clique para ampliar"
+                    />
+                    <!-- Botão Remover -->
+                    <button
+                      type="button"
+                      (click)="removeFile(i)"
+                      class="absolute -top-2 -right-2 bg-white text-red-500 rounded-full p-1 shadow-md hover:bg-red-50 border border-gray-100 transform hover:scale-110 transition-all z-10"
+                      title="Remover imagem"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 18 18" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <!-- Estado: Slot Vazio (Botão Adicionar) -->
+                  <ng-template #emptySlot>
+                    <div
+                      class="w-full h-full border-2 border-dashed border-gray-300 bg-gray-50 rounded-xl hover:bg-gray-100 hover:border-red-300 transition-all cursor-pointer relative group flex flex-col items-center justify-center text-center p-2"
+                    >
+                      <input
+                        type="file"
+                        accept="image/*"
+                        (change)="onFileSelected($event)"
+                        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        title="Adicionar foto"
+                      />
+                      <svg
+                        class="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors mb-1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M12 5v14" />
+                      </svg>
+                      <span class="text-xs text-gray-400 font-medium group-hover:text-red-500"
+                        >Adicionar</span
+                      >
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campo Mensagem com IA Assist -->
+            <div>
+              <div class="flex justify-between items-end mb-1">
+                <label class="block text-xs font-bold text-gray-900 uppercase ml-1" for="message"
+                  >Mensagem (Opcional)</label
+                >
+                <button
+                  type="button"
+                  (click)="improveWithAI()"
+                  [disabled]="isGeneratingAI"
+                  class="flex items-center gap-1 text-[10px] bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-2 py-1 rounded-md transition-colors disabled:opacity-50"
+                >
+                  <!-- Icon: Sparkles/Magic -->
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                    />
+                  </svg>
+                  <span>{{ isGeneratingAI ? 'Melhorando...' : 'Melhorar com IA' }}</span>
+                </button>
+              </div>
+              <div class="relative">
+                <textarea
+                  id="message"
+                  formControlName="message"
+                  rows="3"
+                  placeholder="Ex: Tenho um Civic 2018 para dar na troca ou busco um SUV até 80 mil..."
+                  class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all placeholder-gray-400 resize-none"
+                ></textarea>
+                <div
+                  *ngIf="isGeneratingAI"
+                  class="absolute inset-0 bg-white/80 flex items-center justify-center rounded-xl"
+                >
+                  <div
+                    class="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              [disabled]="contactForm.invalid"
+              [class.opacity-50]="contactForm.invalid"
+              class="w-full bg-gray-900 hover:bg-red-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mt-2 flex items-center justify-center gap-2 group disabled:cursor-not-allowed disabled:transform-none"
+            >
+              <span>ENVIAR MENSAGEM</span>
+              <!-- Icon: Send -->
+              <svg
+                class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m22 2-7 20-4-9-9-4Z" />
+                <path d="M22 2 11 13" />
+              </svg>
+            </button>
+
+            <p class="text-xs text-center text-gray-400 mt-4">
+              Ao enviar, você concorda com nossa política de privacidade.
+            </p>
+          </div>
+        </div>
+
+        <!-- TELA DE SUCESSO -->
+        <div
+          *ngIf="isSubmitted"
+          class="animate-fade-in flex flex-col items-center justify-center text-center h-full text-white py-4"
+        >
+          <div class="bg-white/20 p-4 rounded-full mb-6 animate-bounce">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+          </div>
+
+          <h3 class="text-3xl font-black mb-2">Sucesso!</h3>
+          <p class="text-green-100 mb-8 max-w-xs">
+            Recebemos seus dados. Entraremos em contato em até 10 minutos.
+          </p>
+
+          <!-- Preview Card -->
+          <div class="bg-white rounded-xl p-6 w-full text-left shadow-xl text-gray-900">
+            <h4
+              class="font-bold text-sm uppercase tracking-wider mb-4 text-gray-400 border-b border-gray-100 pb-2"
+            >
+              Resumo do Envio
+            </h4>
+
+            <div class="space-y-3 text-sm">
+              <div>
+                <span class="block text-xs text-gray-500">Nome</span>
+                <span class="font-medium">{{ submittedData?.name }}</span>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <span class="block text-xs text-gray-500">Telefone</span>
+                  <span class="font-medium">{{ submittedData?.phone }}</span>
+                </div>
+                <div>
+                  <span class="block text-xs text-gray-500">Interesse</span>
+                  <span class="font-medium capitalize">{{ submittedData?.interest }}</span>
+                </div>
+              </div>
+              <div>
+                <span class="block text-xs text-gray-500">E-mail</span>
+                <span class="font-medium">{{ submittedData?.email }}</span>
+              </div>
+              <div *ngIf="submittedData?.message">
+                <span class="block text-xs text-gray-500">Mensagem</span>
+                <span class="font-medium italic text-gray-600">"{{ submittedData?.message }}"</span>
+              </div>
+
+              <!-- Preview das Imagens Enviadas -->
+              <div *ngIf="uploadedFiles.length > 0" class="pt-2">
+                <span class="block text-xs text-gray-500 mb-2">Imagens Anexadas</span>
+                <div class="flex -space-x-3 overflow-hidden">
+                  <img
+                    *ngFor="let img of uploadedFiles"
+                    [src]="img.preview"
+                    class="inline-block h-10 w-10 rounded-full ring-2 ring-white object-cover bg-gray-100"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
           <button
-            type="button"
-            class="w-full bg-dark hover:bg-accent text-white font-bold py-4 rounded-xl transition-all"
+            (click)="resetForm()"
+            class="mt-8 text-sm font-bold underline opacity-80 hover:opacity-100 transition-opacity"
           >
-            ENVIAR MENSAGEM
+            Enviar novamente
           </button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Modal de Zoom (Lightbox) -->
+  <div
+    *ngIf="zoomedImage"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm transition-all animate-fade-in"
+    (click)="closeZoom()"
+  >
+    <div class="relative max-w-5xl w-full max-h-screen flex items-center justify-center">
+      <img
+        [src]="zoomedImage"
+        class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+        (click)="$event.stopPropagation()"
+      />
+      <button
+        type="button"
+        (click)="closeZoom()"
+        class="absolute top-4 right-4 md:-top-10 md:-right-10 text-white/80 hover:text-white bg-black/50 hover:bg-white/20 rounded-full p-2 transition-all"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 6 6 18" />
+          <path d="m6 6 18 18" />
+        </svg>
+      </button>
     </div>
   </div>
 </section>
