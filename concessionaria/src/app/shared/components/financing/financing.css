@@ -1,0 +1,17 @@
+/* Ajuste fino para os ícones */
+i {
+  stroke-width: 2.5px;
+}
+
+/* Efeito de brilho suave no fundo */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
