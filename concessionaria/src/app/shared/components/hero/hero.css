@@ -1,0 +1,57 @@
+model-viewer {
+  /* TÉCNICA ANTI-CORTE: */
+  position: absolute; /* Solta o elemento do fluxo normal */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centraliza perfeitamente */
+
+  /* Aumenta a área de desenho para 150% do tamanho do pai */
+  width: 150%;
+  height: 150%;
+
+  /* Garante altura mínima em telas pequenas */
+  min-height: 600px;
+
+  --poster-color: transparent;
+  background-color: transparent;
+  outline: none;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  model-viewer {
+    /* Em telas grandes, aumentamos ainda mais a área vertical */
+    height: 160%;
+    min-height: 800px;
+  }
+}
+
+/* Transições suaves para o carrossel */
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-100 {
+  opacity: 1;
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+  /* Garante que o posicionamento absoluto do model-viewer respeite este container */
+  position: relative;
+}

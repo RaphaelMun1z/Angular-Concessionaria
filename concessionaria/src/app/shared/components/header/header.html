@@ -1,0 +1,109 @@
+<header>
+  <nav
+    class="fixed w-full z-50 transition-all duration-300"
+    [class.shadow-md]="isScrolled"
+    [class.bg-white]="isScrolled"
+    [class.glass-nav]="!isScrolled"
+    id="navbar"
+    aria-label="Menu Principal"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <div class="flex items-center gap-2">
+          <!-- Logo Box com cor Accent -->
+          <div class="bg-accent rounded-lg p-1.5 shadow-lg shadow-accent/30">
+            <i data-lucide="car-front" class="text-white h-6 w-6" aria-hidden="true"></i>
+          </div>
+          <span class="text-2xl font-black tracking-tighter text-dark">
+            AUTO<span class="text-accent">ELITE</span>
+          </span>
+        </div>
+
+        <div class="hidden lg:block">
+          <div class="ml-10 flex items-center space-x-1">
+            <a
+              href="#highlight"
+              (click)="scrollToSection($event, 'highlight')"
+              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
+              >Início</a
+            >
+            <a
+              href="#categories"
+              (click)="scrollToSection($event, 'categories')"
+              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
+              >Categorias</a
+            >
+            <a
+              href="#showroom"
+              (click)="scrollToSection($event, 'showroom')"
+              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
+              >Estoque</a
+            >
+            <a
+              href="#financing"
+              (click)="scrollToSection($event, 'financing')"
+              class="hover:text-accent hover:bg-accentLight/30 transition-all px-4 py-2 rounded-full text-sm font-bold text-dark"
+              >Financiamento</a
+            >
+            <a
+              href="#test-drive"
+              (click)="scrollToSection($event, 'test-drive')"
+              class="ml-4 bg-dark hover:bg-accent text-white px-6 py-2.5 rounded-full transition-all shadow-lg hover:shadow-glow font-bold text-sm transform hover:-translate-y-0.5"
+            >
+              Avaliar meu Carro
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:hidden">
+          <button
+            (click)="toggleMobileMenu()"
+            class="text-dark hover:text-accent focus:outline-none"
+            aria-label="Abrir menu mobile"
+          >
+            <i data-lucide="menu" class="h-8 w-8" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="lg:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full"
+      [class.hidden]="!isMobileMenuOpen"
+      id="mobile-menu"
+    >
+      <div class="px-4 pt-2 pb-4 space-y-1">
+        <a
+          href="#highlight"
+          (click)="scrollToSection($event, 'highlight')"
+          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
+          >Início</a
+        >
+        <a
+          href="#categories"
+          (click)="scrollToSection($event, 'categories')"
+          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
+          >Categorias</a
+        >
+        <a
+          href="#showroom"
+          (click)="scrollToSection($event, 'showroom')"
+          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
+          >Estoque</a
+        >
+        <a
+          href="#financing"
+          (click)="scrollToSection($event, 'financing')"
+          class="text-dark hover:text-accent hover:bg-accentLight/30 block px-3 py-3 rounded-md text-base font-bold"
+          >Financiamento</a
+        >
+        <a
+          href="#test-drive"
+          (click)="scrollToSection($event, 'test-drive')"
+          class="bg-accent text-white block px-3 py-3 rounded-md text-base font-bold mt-2 text-center shadow-lg"
+          >Avaliar meu Carro</a
+        >
+      </div>
+    </div>
+  </nav>
+</header>

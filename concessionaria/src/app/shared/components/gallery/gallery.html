@@ -1,0 +1,71 @@
+<section id="gallery" class="py-20 bg-white border-y border-gray-100 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 flex justify-between items-end">
+    <div>
+      <h2 class="text-3xl font-black text-dark tracking-tight">Nossa Loja</h2>
+      <p class="text-textGray">Estrutura completa de concessionária para atender você.</p>
+    </div>
+    <div class="flex gap-2">
+      <button
+        (click)="scrollGallery('left')"
+        class="p-3 rounded-full border border-gray-200 hover:border-accent hover:bg-accent hover:text-white transition-colors"
+      >
+        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+      </button>
+      <button
+        (click)="scrollGallery('right')"
+        class="p-3 rounded-full border border-gray-200 hover:border-accent hover:bg-accent hover:text-white transition-colors"
+      >
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </div>
+
+  <div
+    #galleryContainer
+    id="gallery-scroll"
+    class="flex overflow-x-auto gap-6 px-4 pb-8 no-scrollbar scroll-smooth"
+  >
+    <figure
+      class="min-w-[85vw] md:min-w-[500px] h-[300px] rounded-3xl overflow-hidden relative flex-shrink-0 shadow-lg"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1562519819-016930d704dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+        alt="Área de Atendimento"
+        class="w-full h-full object-cover"
+      />
+      <figcaption
+        class="absolute bottom-6 left-6 bg-white/90 backdrop-blur text-dark px-4 py-1.5 text-sm font-bold uppercase rounded-lg"
+      >
+        Área de Atendimento
+      </figcaption>
+    </figure>
+    <figure
+      class="min-w-[85vw] md:min-w-[500px] h-[300px] rounded-3xl overflow-hidden relative flex-shrink-0 shadow-lg"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+        alt="Showroom"
+        class="w-full h-full object-cover"
+      />
+      <figcaption
+        class="absolute bottom-6 left-6 bg-white/90 backdrop-blur text-dark px-4 py-1.5 text-sm font-bold uppercase rounded-lg"
+      >
+        Showroom Coberto
+      </figcaption>
+    </figure>
+    <figure
+      class="min-w-[85vw] md:min-w-[500px] h-[300px] rounded-3xl overflow-hidden relative flex-shrink-0 shadow-lg"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+        alt="Oficina"
+        class="w-full h-full object-cover"
+      />
+      <figcaption
+        class="absolute bottom-6 left-6 bg-white/90 backdrop-blur text-dark px-4 py-1.5 text-sm font-bold uppercase rounded-lg"
+      >
+        Oficina Própria
+      </figcaption>
+    </figure>
+  </div>
+</section>

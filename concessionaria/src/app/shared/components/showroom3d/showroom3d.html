@@ -1,0 +1,196 @@
+<section id="showroom-3d" class="py-20 bg-gray-50 text-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block"
+        >Experiência Imersiva</span
+      >
+      <h2 class="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
+        Explore Nossos Modelos <span class="text-accent">Em 3D</span>
+      </h2>
+      <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
+        Interaja com os veículos, gire e veja cada detalhe antes de agendar sua visita.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <article
+        class="card-3d bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <div class="relative bg-gray-100 cursor-grab active:cursor-grabbing">
+          <div
+            class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-gray-100 animate-float"
+          >
+            <span class="text-xs text-gray-500 font-bold block uppercase">A partir de</span>
+            <span class="text-lg font-black text-accent">R$ 159.900</span>
+          </div>
+          <model-viewer
+            src="JeepCompass.glb"
+            alt="SUV Premium 3D"
+            auto-rotate
+            camera-controls
+            shadow-intensity="1"
+            camera-orbit="90deg 75deg 105%"
+            disable-zoom
+            interaction-prompt="none"
+            class="focus:outline-none"
+          ></model-viewer>
+          <div
+            class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-dark/50 backdrop-blur px-3 py-1 rounded-full text-white/80 text-xs flex items-center gap-1 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <i data-lucide="rotate-3d" class="w-3 h-3"></i> Interativo
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-gray-900">Jeep Compass</h3>
+              <p class="text-gray-500 text-sm">Limited Diesel 4x4</p>
+            </div>
+            <!-- Tag Ano Corrigida -->
+            <span class="bg-accentLight text-accent font-bold text-xs px-2 py-1 rounded">2023</span>
+          </div>
+          <div
+            class="flex items-center gap-4 text-sm text-gray-500 mb-6 border-t border-gray-100 pt-4"
+          >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="gauge" class="w-4 h-4"></i> 45km</span
+            >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="fuel" class="w-4 h-4"></i> Diesel</span
+            >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="settings" class="w-4 h-4"></i> Auto</span
+            >
+          </div>
+          <button
+            class="w-full bg-dark hover:bg-accent text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+          >
+            Ver Detalhes <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article
+        class="card-3d bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <div class="relative bg-gray-100 cursor-grab active:cursor-grabbing">
+          <div
+            class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-gray-100 animate-float"
+            style="animation-delay: 1s"
+          >
+            <span class="text-xs text-gray-500 font-bold block uppercase">Oferta</span>
+            <span class="text-lg font-black text-accent">R$ 135.000</span>
+          </div>
+          <model-viewer
+            src="ToyotaCorolla.glb"
+            alt="Sedan Luxo 3D"
+            auto-rotate
+            camera-controls
+            shadow-intensity="1"
+            camera-orbit="90deg 75deg 105%"
+            disable-zoom
+            interaction-prompt="none"
+            class="focus:outline-none"
+          ></model-viewer>
+          <div
+            class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-dark/50 backdrop-blur px-3 py-1 rounded-full text-white/80 text-xs flex items-center gap-1 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <i data-lucide="rotate-3d" class="w-3 h-3"></i> Interativo
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-gray-900">Toyota Corolla</h3>
+              <p class="text-gray-500 text-sm">XEi 2.0 Flex</p>
+            </div>
+            <span class="bg-accentLight text-accent font-bold text-xs px-2 py-1 rounded">2023</span>
+          </div>
+          <div
+            class="flex items-center gap-4 text-sm text-gray-500 mb-6 border-t border-gray-100 pt-4"
+          >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="gauge" class="w-4 h-4"></i> 12km</span
+            >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="fuel" class="w-4 h-4"></i> Flex</span
+            >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="settings" class="w-4 h-4"></i> CVT</span
+            >
+          </div>
+          <button
+            class="w-full bg-dark hover:bg-accent text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+          >
+            Ver Detalhes <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article
+        class="card-3d bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <div class="relative bg-gray-100 cursor-grab active:cursor-grabbing">
+          <div
+            class="absolute top-4 right-4 z-10 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-gray-100 animate-float"
+            style="animation-delay: 0.5s"
+          >
+            <span class="text-xs text-gray-500 font-bold block uppercase">Oportunidade</span>
+            <span class="text-lg font-black text-accent">R$ 98.900</span>
+          </div>
+          <model-viewer
+            src="VolkswagenPolo.glb"
+            alt="Hatch Sport 3D"
+            auto-rotate
+            camera-controls
+            shadow-intensity="1"
+            camera-orbit="270deg 75deg 105%"
+            disable-zoom
+            interaction-prompt="none"
+            class="focus:outline-none"
+          ></model-viewer>
+          <div
+            class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-dark/50 backdrop-blur px-3 py-1 rounded-full text-white/80 text-xs flex items-center gap-1 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            <i data-lucide="rotate-3d" class="w-3 h-3"></i> Interativo
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <h3 class="text-xl font-bold text-gray-900">VW Polo</h3>
+              <p class="text-gray-500 text-sm">Highline TSI</p>
+            </div>
+            <span class="bg-accentLight text-accent font-bold text-xs px-2 py-1 rounded">2024</span>
+          </div>
+          <div
+            class="flex items-center gap-4 text-sm text-gray-500 mb-6 border-t border-gray-100 pt-4"
+          >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="gauge" class="w-4 h-4"></i> 8km</span
+            >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="fuel" class="w-4 h-4"></i> Flex</span
+            >
+            <span class="flex items-center gap-1"
+              ><i data-lucide="settings" class="w-4 h-4"></i> Auto</span
+            >
+          </div>
+          <button
+            class="w-full bg-dark hover:bg-accent text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+          >
+            Ver Detalhes <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

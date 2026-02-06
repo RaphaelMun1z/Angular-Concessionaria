@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <title>AutoElite | Carros Seminovos e Usados Multimarcas com Garantia</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- ================= SEO META TAGS ================= -->
+    <meta
+      name="description"
+      content="Encontre os melhores carros seminovos e usados na AutoElite. Veículos revisados, laudo cautelar aprovado, financiamento facilitado e garantia. Confira nosso estoque!"
+    />
+    <meta
+      name="keywords"
+      content="carros usados, seminovos, concessionária, venda de carros, financiamento auto, comprar carro, AutoElite"
+    />
+    <meta name="author" content="AutoElite Veículos" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://www.autoelite.com.br/" />
+
+    <!-- ================= OPEN GRAPH / FACEBOOK ================= -->
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content="https://www.autoelite.com.br/" />
+    <meta property="og:title" content="AutoElite | Carros Seminovos e Usados Multimarcas" />
+    <meta
+      property="og:description"
+      content="Veículos revisados com garantia e procedência. As melhores taxas de financiamento do mercado."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1560250056-07ba64664864?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+    />
+
+    <!-- ================= TWITTER ================= -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.autoelite.com.br/" />
+    <meta property="twitter:title" content="AutoElite | Carros Seminovos e Usados Multimarcas" />
+    <meta
+      property="twitter:description"
+      content="Veículos revisados com garantia e procedência. As melhores taxas de financiamento do mercado."
+    />
+    <meta
+      property="twitter:image"
+      content="https://images.unsplash.com/photo-1560250056-07ba64664864?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+    />
+
+    <!-- ================= FONTES E ESTILOS EXTERNOS ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos para animações (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- ================= SCRIPTS GLOBAIS (CDN) ================= -->
+    <!-- Tailwind CSS (Modo Play CDN para desenvolvimento rápido) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuração das cores do Tailwind (NOVA PALETA ELITE: Navy & Gold) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+            },
+            colors: {
+              primary: '#F8FAFC',   /* Slate 50 - Fundo Clean */
+              secondary: '#FFFFFF',
+              dark: '#0F172A',      /* Slate 900 - Navy Profundo */
+              textGray: '#64748B',  /* Slate 500 */
+              
+              /* NOVA PALETA DE CORES (OURO/BRONZE) */
+              accent: '#B45309',      /* Amber 700 - Dourado Escuro Elegante */
+              accentHover: '#92400E', /* Amber 800 */
+              accentLight: '#FEF3C7', /* Amber 100 - Fundo Suave */
+              
+              surface: '#FFFFFF',
+            },
+            backgroundImage: {
+              'hero-pattern':
+                "linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.3)), url('https://images.unsplash.com/photo-1560250056-07ba64664864?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
+              'cta-pattern':
+                "linear-gradient(to right, rgba(180, 83, 9, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')",
+            },
+            boxShadow: {
+              soft: '0 10px 40px -10px rgba(0,0,0,0.08)',
+              glow: '0 0 20px rgba(180, 83, 9, 0.3)', /* Glow Dourado */
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Script para Ícones (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Script para o visualizador 3D -->
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"
+    ></script>
+
+    <!-- ================= SCHEMA MARKUP (SEO AVANÇADO) ================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AutoDealer",
+        "name": "AutoElite Veículos",
+        "image": "https://images.unsplash.com/photo-1560250056-07ba64664864?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. das Nações, 1200",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "postalCode": "01000-000",
+          "addressCountry": "BR"
+        },
+        "telephone": "+551133334444"
+      }
+    </script>
+  </head>
+  <body class="bg-primary text-dark antialiased">
+    <app-root></app-root>
+  </body>
+</html>
